@@ -1,0 +1,413 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		09B216151C75B5B4002656A4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09B216141C75B5B4002656A4 /* main.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		09B216031C75B136002656A4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		09B216051C75B136002656A4 /* imageclipper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = imageclipper; sourceTree = BUILT_PRODUCTS_DIR; };
+		09B216111C75B5B4002656A4 /* cvdrawwatershed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cvdrawwatershed.h; path = imageclipper/cvdrawwatershed.h; sourceTree = "<group>"; };
+		09B216121C75B5B4002656A4 /* filesystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = filesystem.h; path = imageclipper/filesystem.h; sourceTree = "<group>"; };
+		09B216131C75B5B4002656A4 /* icformat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = icformat.h; path = imageclipper/icformat.h; sourceTree = "<group>"; };
+		09B216141C75B5B4002656A4 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = imageclipper/main.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		09B216021C75B136002656A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		09B215FC1C75B136002656A4 = {
+			isa = PBXGroup;
+			children = (
+				09B216101C75B5A7002656A4 /* imageclipper */,
+				09B216061C75B136002656A4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		09B216061C75B136002656A4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				09B216051C75B136002656A4 /* imageclipper */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		09B216101C75B5A7002656A4 /* imageclipper */ = {
+			isa = PBXGroup;
+			children = (
+				09B216111C75B5B4002656A4 /* cvdrawwatershed.h */,
+				09B216121C75B5B4002656A4 /* filesystem.h */,
+				09B216131C75B5B4002656A4 /* icformat.h */,
+				09B216141C75B5B4002656A4 /* main.cpp */,
+			);
+			name = imageclipper;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		09B216041C75B136002656A4 /* imageclipper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09B2160C1C75B136002656A4 /* Build configuration list for PBXNativeTarget "imageclipper" */;
+			buildPhases = (
+				09B216011C75B136002656A4 /* Sources */,
+				09B216021C75B136002656A4 /* Frameworks */,
+				09B216031C75B136002656A4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = imageclipper;
+			productName = imageclipper;
+			productReference = 09B216051C75B136002656A4 /* imageclipper */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		09B215FD1C75B136002656A4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Alleys Wonderlab";
+				TargetAttributes = {
+					09B216041C75B136002656A4 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 09B216001C75B136002656A4 /* Build configuration list for PBXProject "imageclipper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 09B215FC1C75B136002656A4;
+			productRefGroup = 09B216061C75B136002656A4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				09B216041C75B136002656A4 /* imageclipper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		09B216011C75B136002656A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09B216151C75B5B4002656A4 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		09B2160A1C75B136002656A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		09B2160B1C75B136002656A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		09B2160D1C75B136002656A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/opencv,
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-lopencv_calib3d",
+					"-lopencv_core",
+					"-lopencv_features2d",
+					"-lopencv_flann",
+					"-lopencv_highgui",
+					"-lopencv_imgcodecs",
+					"-lopencv_imgproc",
+					"-lopencv_ml",
+					"-lopencv_objdetect",
+					"-lopencv_photo",
+					"-lopencv_shape",
+					"-lopencv_stitching",
+					"-lopencv_superres",
+					"-lopencv_ts",
+					"-lopencv_video",
+					"-lopencv_videoio",
+					"-lopencv_videostab",
+					"\"/usr/local/lib/libboost_atomic-mt.dylib\"",
+					"\"/usr/local/lib/libboost_chrono-mt.dylib\"",
+					/usr/local/lib/libboost_chrono.dylib,
+					"\"/usr/local/lib/libboost_container-mt.dylib\"",
+					/usr/local/lib/libboost_container.dylib,
+					"\"/usr/local/lib/libboost_context-mt.dylib\"",
+					"\"/usr/local/lib/libboost_coroutine-mt.dylib\"",
+					/usr/local/lib/libboost_coroutine.dylib,
+					"\"/usr/local/lib/libboost_date_time-mt.dylib\"",
+					/usr/local/lib/libboost_date_time.dylib,
+					"\"/usr/local/lib/libboost_filesystem-mt.dylib\"",
+					/usr/local/lib/libboost_filesystem.dylib,
+					"\"/usr/local/lib/libboost_graph-mt.dylib\"",
+					/usr/local/lib/libboost_graph.dylib,
+					"\"/usr/local/lib/libboost_iostreams-mt.dylib\"",
+					/usr/local/lib/libboost_iostreams.dylib,
+					"\"/usr/local/lib/libboost_locale-mt.dylib\"",
+					"\"/usr/local/lib/libboost_log_setup-mt.dylib\"",
+					/usr/local/lib/libboost_log_setup.dylib,
+					"\"/usr/local/lib/libboost_log-mt.dylib\"",
+					/usr/local/lib/libboost_log.dylib,
+					"\"/usr/local/lib/libboost_math_c99-mt.dylib\"",
+					/usr/local/lib/libboost_math_c99.dylib,
+					"\"/usr/local/lib/libboost_math_c99f-mt.dylib\"",
+					/usr/local/lib/libboost_math_c99f.dylib,
+					"\"/usr/local/lib/libboost_math_c99l-mt.dylib\"",
+					/usr/local/lib/libboost_math_c99l.dylib,
+					"\"/usr/local/lib/libboost_math_tr1-mt.dylib\"",
+					/usr/local/lib/libboost_math_tr1.dylib,
+					"\"/usr/local/lib/libboost_math_tr1f-mt.dylib\"",
+					/usr/local/lib/libboost_math_tr1f.dylib,
+					"\"/usr/local/lib/libboost_math_tr1l-mt.dylib\"",
+					/usr/local/lib/libboost_math_tr1l.dylib,
+					"\"/usr/local/lib/libboost_prg_exec_monitor-mt.dylib\"",
+					/usr/local/lib/libboost_prg_exec_monitor.dylib,
+					"\"/usr/local/lib/libboost_program_options-mt.dylib\"",
+					/usr/local/lib/libboost_program_options.dylib,
+					"\"/usr/local/lib/libboost_random-mt.dylib\"",
+					/usr/local/lib/libboost_random.dylib,
+					"\"/usr/local/lib/libboost_regex-mt.dylib\"",
+					/usr/local/lib/libboost_regex.dylib,
+					"\"/usr/local/lib/libboost_serialization-mt.dylib\"",
+					/usr/local/lib/libboost_serialization.dylib,
+					"\"/usr/local/lib/libboost_signals-mt.dylib\"",
+					/usr/local/lib/libboost_signals.dylib,
+					"\"/usr/local/lib/libboost_system-mt.dylib\"",
+					/usr/local/lib/libboost_system.dylib,
+					"\"/usr/local/lib/libboost_thread-mt.dylib\"",
+					"\"/usr/local/lib/libboost_timer-mt.dylib\"",
+					/usr/local/lib/libboost_timer.dylib,
+					"\"/usr/local/lib/libboost_type_erasure-mt.dylib\"",
+					/usr/local/lib/libboost_type_erasure.dylib,
+					"\"/usr/local/lib/libboost_unit_test_framework-mt.dylib\"",
+					/usr/local/lib/libboost_unit_test_framework.dylib,
+					"\"/usr/local/lib/libboost_wave-mt.dylib\"",
+					"\"/usr/local/lib/libboost_wserialization-mt.dylib\"",
+					/usr/local/lib/libboost_wserialization.dylib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		09B2160E1C75B136002656A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/opencv,
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-lopencv_calib3d",
+					"-lopencv_core",
+					"-lopencv_features2d",
+					"-lopencv_flann",
+					"-lopencv_highgui",
+					"-lopencv_imgcodecs",
+					"-lopencv_imgproc",
+					"-lopencv_ml",
+					"-lopencv_objdetect",
+					"-lopencv_photo",
+					"-lopencv_shape",
+					"-lopencv_stitching",
+					"-lopencv_superres",
+					"-lopencv_ts",
+					"-lopencv_video",
+					"-lopencv_videoio",
+					"-lopencv_videostab",
+					"\"/usr/local/lib/libboost_atomic-mt.dylib\"",
+					"\"/usr/local/lib/libboost_chrono-mt.dylib\"",
+					/usr/local/lib/libboost_chrono.dylib,
+					"\"/usr/local/lib/libboost_container-mt.dylib\"",
+					/usr/local/lib/libboost_container.dylib,
+					"\"/usr/local/lib/libboost_context-mt.dylib\"",
+					"\"/usr/local/lib/libboost_coroutine-mt.dylib\"",
+					/usr/local/lib/libboost_coroutine.dylib,
+					"\"/usr/local/lib/libboost_date_time-mt.dylib\"",
+					/usr/local/lib/libboost_date_time.dylib,
+					"\"/usr/local/lib/libboost_filesystem-mt.dylib\"",
+					/usr/local/lib/libboost_filesystem.dylib,
+					"\"/usr/local/lib/libboost_graph-mt.dylib\"",
+					/usr/local/lib/libboost_graph.dylib,
+					"\"/usr/local/lib/libboost_iostreams-mt.dylib\"",
+					/usr/local/lib/libboost_iostreams.dylib,
+					"\"/usr/local/lib/libboost_locale-mt.dylib\"",
+					"\"/usr/local/lib/libboost_log_setup-mt.dylib\"",
+					/usr/local/lib/libboost_log_setup.dylib,
+					"\"/usr/local/lib/libboost_log-mt.dylib\"",
+					/usr/local/lib/libboost_log.dylib,
+					"\"/usr/local/lib/libboost_math_c99-mt.dylib\"",
+					/usr/local/lib/libboost_math_c99.dylib,
+					"\"/usr/local/lib/libboost_math_c99f-mt.dylib\"",
+					/usr/local/lib/libboost_math_c99f.dylib,
+					"\"/usr/local/lib/libboost_math_c99l-mt.dylib\"",
+					/usr/local/lib/libboost_math_c99l.dylib,
+					"\"/usr/local/lib/libboost_math_tr1-mt.dylib\"",
+					/usr/local/lib/libboost_math_tr1.dylib,
+					"\"/usr/local/lib/libboost_math_tr1f-mt.dylib\"",
+					/usr/local/lib/libboost_math_tr1f.dylib,
+					"\"/usr/local/lib/libboost_math_tr1l-mt.dylib\"",
+					/usr/local/lib/libboost_math_tr1l.dylib,
+					"\"/usr/local/lib/libboost_prg_exec_monitor-mt.dylib\"",
+					/usr/local/lib/libboost_prg_exec_monitor.dylib,
+					"\"/usr/local/lib/libboost_program_options-mt.dylib\"",
+					/usr/local/lib/libboost_program_options.dylib,
+					"\"/usr/local/lib/libboost_random-mt.dylib\"",
+					/usr/local/lib/libboost_random.dylib,
+					"\"/usr/local/lib/libboost_regex-mt.dylib\"",
+					/usr/local/lib/libboost_regex.dylib,
+					"\"/usr/local/lib/libboost_serialization-mt.dylib\"",
+					/usr/local/lib/libboost_serialization.dylib,
+					"\"/usr/local/lib/libboost_signals-mt.dylib\"",
+					/usr/local/lib/libboost_signals.dylib,
+					"\"/usr/local/lib/libboost_system-mt.dylib\"",
+					/usr/local/lib/libboost_system.dylib,
+					"\"/usr/local/lib/libboost_thread-mt.dylib\"",
+					"\"/usr/local/lib/libboost_timer-mt.dylib\"",
+					/usr/local/lib/libboost_timer.dylib,
+					"\"/usr/local/lib/libboost_type_erasure-mt.dylib\"",
+					/usr/local/lib/libboost_type_erasure.dylib,
+					"\"/usr/local/lib/libboost_unit_test_framework-mt.dylib\"",
+					/usr/local/lib/libboost_unit_test_framework.dylib,
+					"\"/usr/local/lib/libboost_wave-mt.dylib\"",
+					"\"/usr/local/lib/libboost_wserialization-mt.dylib\"",
+					/usr/local/lib/libboost_wserialization.dylib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		09B216001C75B136002656A4 /* Build configuration list for PBXProject "imageclipper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09B2160A1C75B136002656A4 /* Debug */,
+				09B2160B1C75B136002656A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		09B2160C1C75B136002656A4 /* Build configuration list for PBXNativeTarget "imageclipper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09B2160D1C75B136002656A4 /* Debug */,
+				09B2160E1C75B136002656A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 09B215FD1C75B136002656A4 /* Project object */;
+}

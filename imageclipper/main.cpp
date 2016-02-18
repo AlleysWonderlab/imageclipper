@@ -31,6 +31,10 @@
 #pragma comment(lib, "highgui.lib")
 #endif
 
+#define __BEGIN__ {
+#define __END__ goto exit; exit: ; }
+#define __EXIT__ goto exit
+
 #include "cv.h"
 #include "cvaux.h"
 #include "cxcore.h"
