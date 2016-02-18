@@ -1,18 +1,18 @@
 /** @file */
 /* The MIT License
- * 
+ *
  * Copyright (c) 2008, Naotoshi Seo <sonots(at)gmail.com>
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -66,7 +66,7 @@ typedef struct CvCallbackParam {
     vector<string> imtypes;    /**< image file types */
     const char* output_format; /**< output filename format */
     int inc;                   /**< incremental speed via keyboard operations */
-    // rectangle region 
+    // rectangle region
     CvRect rect;               /**< rectangle parameter to be shown */
     int rotate;                /**< rotation angle */
     CvPoint shear;             /**< shear deformation */
@@ -170,7 +170,7 @@ void load_reference( const ArgParam* arg, CvCallbackParam* param )
     bool is_dir   = filesystem::is_dir( arg->reference );
     bool is_image = filesystem::match_extensions( arg->reference, param->imtypes );
     bool is_video = !is_dir & !is_image;
-    param->output_format = ( arg->output_format != NULL ? arg->output_format : 
+    param->output_format = ( arg->output_format != NULL ? arg->output_format :
         ( is_video ? arg->vidout_format : arg->imgout_format ) );
     param->frame = arg->frame;
 
@@ -249,11 +249,11 @@ void key_callback( const ArgParam* arg, CvCallbackParam* param )
 {
     string filename = param->cap == NULL ? *param->fileiter : arg->reference;
 
-    cvShowCroppedImage( param->miniw_name, param->img, 
-        cvRect32fFromRect( param->rect, param->rotate ), 
+    cvShowCroppedImage( param->miniw_name, param->img,
+        cvRect32fFromRect( param->rect, param->rotate ),
         cvPointTo32f( param->shear ) );
-    cvShowImageAndRectangle( param->w_name, param->img, 
-        cvRect32fFromRect( param->rect, param->rotate ), 
+    cvShowImageAndRectangle( param->w_name, param->img,
+        cvRect32fFromRect( param->rect, param->rotate ),
         cvPointTo32f( param->shear ) );
 
     while( true ) // key callback
@@ -261,14 +261,14 @@ void key_callback( const ArgParam* arg, CvCallbackParam* param )
         char key = cvWaitKey( 0 );
 
         // 32 is SPACE
-        if( key == 's' || key == 32 ) // Save
+        if( key == 's' ) // Save
         {
             if( param->rect.width > 0 && param->rect.height > 0 )
             {
-                string output_path = icFormat( 
-                    param->output_format, filesystem::dirname( filename ), 
+                string output_path = icFormat(
+                    param->output_format, filesystem::dirname( filename ),
                     filesystem::filename( filename ), filesystem::extension( filename ),
-                    param->rect.x, param->rect.y, param->rect.width, param->rect.height, 
+                    param->rect.x, param->rect.y, param->rect.width, param->rect.height,
                     param->frame, param->rotate );
 
                 if( !filesystem::match_extensions( output_path, param->imtypes ) )
@@ -278,11 +278,11 @@ void key_callback( const ArgParam* arg, CvCallbackParam* param )
                 }
                 filesystem::r_mkdir( filesystem::dirname( output_path ) );
 
-                IplImage* crop = cvCreateImage( 
-                    cvSize( param->rect.width, param->rect.height ), 
+                IplImage* crop = cvCreateImage(
+                    cvSize( param->rect.width, param->rect.height ),
                     param->img->depth, param->img->nChannels );
-                cvCropImageROI( param->img, crop, 
-                                cvRect32fFromRect( param->rect, param->rotate ), 
+                cvCropImageROI( param->img, crop,
+                                cvRect32fFromRect( param->rect, param->rotate ),
                                 cvPointTo32f( param->shear ) );
                 cvSaveImage( filesystem::realpath( output_path ).c_str(), crop );
                 cout << filesystem::realpath( output_path ) << endl;
@@ -294,16 +294,20 @@ void key_callback( const ArgParam* arg, CvCallbackParam* param )
         {
             if( param->cap )
             {
-                IplImage* tmpimg = cvQueryFrame( param->cap );
+                IplImage* tmpimg;
+                int n = (key == 'f')? 1: 15;
+
+                for (int i = 0; i < n; i++)
+                    tmpimg = cvQueryFrame( param->cap );
                 if( tmpimg != NULL )
                 //if( frame < cvGetCaptureProperty( param->cap, CV_CAP_PROP_FRAME_COUNT ) )
                 {
-                    param->img = tmpimg; 
+                    param->img = tmpimg;
 #if (defined(WIN32) || defined(WIN64)) && (CV_MAJOR_VERSION < 1 || (CV_MAJOR_VERSION == 1 && CV_MINOR_VERSION < 1))
                     param->img->origin = 0;
                     cvFlip( param->img );
 #endif
-                    param->frame++;
+                    param->frame += n;
                     cout << "Now showing " << filesystem::realpath( filename ) << " " <<  param->frame << endl;
                 }
             }
@@ -320,13 +324,15 @@ void key_callback( const ArgParam* arg, CvCallbackParam* param )
             }
         }
         // Backward
-        else if( key == 'b' )
+        else if( key == 'b' || key == 'B' )
         {
             if( param->cap )
             {
                 IplImage* tmpimg;
-                param->frame = max( 1, param->frame - 1 );
-                cvSetCaptureProperty( param->cap, CV_CAP_PROP_POS_FRAMES, param->frame - 1 );
+                int n = (key == 'b')? 1: 15;
+
+                param->frame = max( 1, param->frame - n );
+                    cvSetCaptureProperty( param->cap, CV_CAP_PROP_POS_FRAMES, param->frame - n );
                 if( tmpimg = cvQueryFrame( param->cap ) )
                 {
                     param->img = tmpimg;
@@ -339,7 +345,7 @@ void key_callback( const ArgParam* arg, CvCallbackParam* param )
             }
             else
             {
-                if( param->fileiter != param->filelist.begin() ) 
+                if( param->fileiter != param->filelist.begin() )
                 {
                     cvReleaseImage( &param->img );
                     param->fileiter--;
@@ -363,6 +369,11 @@ void key_callback( const ArgParam* arg, CvCallbackParam* param )
         {
             param->inc = max( 1, param->inc - 1 );
             cout << "Inc: " << param->inc << endl;
+        }
+        else if ( key == 'x' )
+        {
+            param->rect.width =  0;
+            param->rect.height = 0;
         }
 
         if( param->watershed ) // watershed
@@ -441,8 +452,8 @@ void key_callback( const ArgParam* arg, CvCallbackParam* param )
             if( param->img )
             {
                 param->rect = cvShowImageAndWatershed( param->w_name, param->img, param->circle );
-                cvShowCroppedImage( param->miniw_name, param->img, 
-                                    cvRect32fFromRect( param->rect, param->rotate ), 
+                cvShowCroppedImage( param->miniw_name, param->img,
+                                    cvRect32fFromRect( param->rect, param->rotate ),
                                     cvPointTo32f( param->shear ) );
             }
         }
@@ -527,7 +538,7 @@ void key_callback( const ArgParam* arg, CvCallbackParam* param )
             /*
               if( key == 'e' || key == 'E' ) // Expansion and Shrink so that ratio does not change
               {
-              if( param->rect.height != 0 && param->rect.width != 0 ) 
+              if( param->rect.height != 0 && param->rect.width != 0 )
               {
               int gcd, a = param->rect.width, b = param->rect.height;
               while( 1 )
@@ -545,9 +556,9 @@ void key_callback( const ArgParam* arg, CvCallbackParam* param )
               {
               cout << ratio_width << ":" << ratio_height << " * " << gcd << endl;
               param->rect.width = ratio_width * gcd;
-              param->rect.height = ratio_height * gcd; 
-              cvShowImageAndRectangle( param->w_name, param->img, 
-              cvRect32fFromRect( param->rect, param->rotate ), 
+              param->rect.height = ratio_height * gcd;
+              cvShowImageAndRectangle( param->w_name, param->img,
+              cvRect32fFromRect( param->rect, param->rotate ),
               cvPointTo32f( param->shear ) );
               }
               }
@@ -555,11 +566,11 @@ void key_callback( const ArgParam* arg, CvCallbackParam* param )
 
             if( param->img )
             {
-                cvShowImageAndRectangle( param->w_name, param->img, 
-                                         cvRect32fFromRect( param->rect, param->rotate ), 
+                cvShowImageAndRectangle( param->w_name, param->img,
+                                         cvRect32fFromRect( param->rect, param->rotate ),
                                          cvPointTo32f( param->shear ) );
-                cvShowCroppedImage( param->miniw_name, param->img, 
-                                    cvRect32fFromRect( param->rect, param->rotate ), 
+                cvShowCroppedImage( param->miniw_name, param->img,
+                                    cvRect32fFromRect( param->rect, param->rotate ),
                                     cvPointTo32f( param->shear ) );
             }
         }
@@ -588,7 +599,7 @@ void mouse_callback( int event, int x, int y, int flags, void* _param )
     if( y >= 32768 ) y -= 65536; // change top outside to negative
 
     // MBUTTON or LBUTTON + SHIFT is to draw wathershed
-    if( event == CV_EVENT_MBUTTONDOWN || 
+    if( event == CV_EVENT_MBUTTONDOWN ||
         ( event == CV_EVENT_LBUTTONDOWN && flags & CV_EVENT_FLAG_SHIFTKEY ) ) // initialization
     {
         param->circle.x = x;
@@ -603,8 +614,8 @@ void mouse_callback( int event, int x, int y, int flags, void* _param )
 
         param->circle.width = (int) cvPointNorm( cvPoint( param->circle.x, param->circle.y ), cvPoint( x, y ) );
         param->rect = cvShowImageAndWatershed( param->w_name, param->img, param->circle );
-        cvShowCroppedImage( param->miniw_name, param->img, 
-                            cvRect32fFromRect( param->rect, param->rotate ), 
+        cvShowCroppedImage( param->miniw_name, param->img,
+                            cvRect32fFromRect( param->rect, param->rotate ),
                             cvPointTo32f( param->shear ) );
     }
 
@@ -624,11 +635,14 @@ void mouse_callback( int event, int x, int y, int flags, void* _param )
         param->rect.width =  abs( point0.x - x );
         param->rect.height = abs( point0.y - y );
 
-        cvShowImageAndRectangle( param->w_name, param->img, 
-                                 cvRect32fFromRect( param->rect, param->rotate ), 
+        if (param->rect.width < 20 || param->rect.height < 20)
+            param->rect.width = param->rect.height = 0;
+
+        cvShowImageAndRectangle( param->w_name, param->img,
+                                 cvRect32fFromRect( param->rect, param->rotate ),
                                  cvPointTo32f( param->shear ) );
-        cvShowCroppedImage( param->miniw_name, param->img, 
-                            cvRect32fFromRect( param->rect, param->rotate ), 
+        cvShowCroppedImage( param->miniw_name, param->img,
+                            cvRect32fFromRect( param->rect, param->rotate ),
                             cvPointTo32f( param->shear ) );
     }
 
@@ -654,14 +668,14 @@ void mouse_callback( int event, int x, int y, int flags, void* _param )
         {
             param->watershed = false;
 
-            if( ( param->rect.x < x && x < param->rect.x + param->rect.width ) && 
+            if( ( param->rect.x < x && x < param->rect.x + param->rect.width ) &&
                 ( param->rect.y < y && y < param->rect.y + param->rect.height ) )
             {
                 move_rect = true;
             }
             if( x <= param->rect.x )
             {
-                resize_rect_left = true; 
+                resize_rect_left = true;
             }
             else if( x >= param->rect.x + param->rect.width )
             {
@@ -669,7 +683,7 @@ void mouse_callback( int event, int x, int y, int flags, void* _param )
             }
             if( y <= param->rect.y )
             {
-                resize_rect_top = true; 
+                resize_rect_top = true;
             }
             else if( y >= param->rect.y + param->rect.height )
             {
@@ -686,7 +700,7 @@ void mouse_callback( int event, int x, int y, int flags, void* _param )
             param->circle.y += move.y;
 
             param->rect = cvShowImageAndWatershed( param->w_name, param->img, param->circle );
-            cvShowCroppedImage( param->miniw_name, param->img, 
+            cvShowCroppedImage( param->miniw_name, param->img,
                                 cvRect32fFromRect( param->rect, param->rotate ),
                                 cvPointTo32f( param->shear ) );
 
@@ -696,8 +710,8 @@ void mouse_callback( int event, int x, int y, int flags, void* _param )
         {
             param->circle.width = (int) cvPointNorm( cvPoint( param->circle.x, param->circle.y ), cvPoint( x, y ) );
             param->rect = cvShowImageAndWatershed( param->w_name, param->img, param->circle );
-            cvShowCroppedImage( param->miniw_name, param->img, 
-                                cvRect32fFromRect( param->rect, param->rotate ), 
+            cvShowCroppedImage( param->miniw_name, param->img,
+                                cvRect32fFromRect( param->rect, param->rotate ),
                                 cvPointTo32f( param->shear ) );
         }
     }
@@ -751,11 +765,11 @@ void mouse_callback( int event, int x, int y, int flags, void* _param )
             resize_rect_bottom = tmp;
         }
 
-        cvShowImageAndRectangle( param->w_name, param->img, 
-                                 cvRect32fFromRect( param->rect, param->rotate ), 
+        cvShowImageAndRectangle( param->w_name, param->img,
+                                 cvRect32fFromRect( param->rect, param->rotate ),
                                  cvPointTo32f( param->shear ) );
-        cvShowCroppedImage( param->miniw_name, param->img, 
-                            cvRect32fFromRect( param->rect, param->rotate ), 
+        cvShowCroppedImage( param->miniw_name, param->img,
+                            cvRect32fFromRect( param->rect, param->rotate ),
                             cvPointTo32f( param->shear ) );
         point0 = cvPoint( x, y );
     }
@@ -785,7 +799,7 @@ void arg_parse( int argc, char** argv, ArgParam *arg )
         {
             usage( arg );
             return;
-        } 
+        }
         else if( !strcmp( argv[i], "-o" ) || !strcmp( argv[i], "--output_format" ) )
         {
             arg->output_format = argv[++i];
